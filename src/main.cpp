@@ -2,143 +2,193 @@
 #include <iostream>
 #include <string>
 
-void XOR_menu()
-{
-    CryptoCore crypto;
-    int option;
-    std::string inputPath;
-    std::string outputPath;
-    std::string key;
-    std::string keyFilePath;
-    std::string algorithm;
+void menu(){
+    CryptoCore Crypto;
+    int option, under_option, key_leght;
+    std::string inputPath, outputPath, algorithm, key, filePath;
 
-    std::cout << "-----XOR crypto-----\n\n\n";
-    std::cout << "1: Enctypr file\n";
-    std::cout << "2: Decrypt file\n";
-    std::cout << "3: Generate and save key\n";
-    std::cout << "4: Encrypt using key file\n";
-    std::cout << "5: Decrypt using key file\n";
-    std::cout << "6: Quit\n";
-    std::cout << "Choose option: ";
-    std::cin >> option;
-    std::cout << '\n';
+    std::cout<<"==========BlackCrypt==========\n\n";
 
-    switch (option)
-    {
-    case 1:
-    {
-        std::cout << "Enter path to input file: \n";
-        std::cin >> inputPath;
+    std::cout<<"1. encrypt\n";
+    std::cout<<"2. decrypt\n";
+    std::cout<<"3. encrypt with key file\n";
+    std::cout<<"4. decrypt with key file\n";
+    std::cout<<"5. generate and save key to file\n";
+    std::cout<<"6. quit\n";
+    std::cout<<"Choose option: \n";
+    std::cin>>option;
 
-        std::cout << "Enter path to output file: \n";
-        std::cin >> outputPath;
+    switch(option){
+        //encrypt
+        case 1:{
+            std::cout<<"1. encrypt via XOR\n";
+            std::cout<<"2. encrypt via AES128\n";
+            std::cout<<"Choose option: \n";
+            std::cin>>under_option;
+            switch(under_option){
+                case 1:{
+                    std::cout<<"==========XOR==========\n\n";
 
-        std::cout << "Enter key: \n";
-        std::cin >> key;
+                    std::cout<<"enter input path to file\n";
+                    std::cin>>inputPath;
 
-        std::cout << "Start XOR crypto: \n";
-        crypto.xorEncryptFile(inputPath, outputPath, key);
-        std::cout << "-----XOR done successfull!-----\n";
+                    std::cout<<"enter output path to file\n";
+                    std::cin>>outputPath;
 
-        break;
-    }
+                    std::cout<<"enter key\n";
+                    std::cin>>key;
 
-    case 2:
-    {
-        std::cout << "Enter path to input file: \n";
-        std::cin >> inputPath;
+                    Crypto.xorEncryptFile(inputPath, outputPath, key);
+                    break;
+                }
+                
+                case 2:{
+                    std::cout<<"==========AES128==========\n\n";
 
-        std::cout << "Enter path to output file: \n";
-        std::cin >> outputPath;
+                    std::cout<<"enter input path to file\n";
+                    std::cin>>inputPath;
 
-        std::cout << "Enter key: \n";
-        std::cin >> key;
+                    std::cout<<"enter output path to file\n";
+                    std::cin>>outputPath;
 
-        std::cout << "Start XOR decrypto: \n";
-        crypto.xorDecryptFile(inputPath, outputPath, key);
-        std::cout << "-----XOR done successfull!-----\n";
+                    std::cout<<"enter key\n";
+                    std::cin>>key;
 
-        break;
-    }
+                    Crypto.aesEncryptFIle(inputPath, outputPath, key);
+                    break;
+                }
 
-    case 3:
-    {
-        int leght;
-        std::cout << "Key leght: \n";
-        std::cin >> leght;
-
-        std::cout << "Key file to save: \n";
-        std::cin >> keyFilePath;
-
-        std::string generatedKey = crypto.xorGenerateKey(leght);
-        bool saved = crypto.saveKeyToFile(generatedKey, keyFilePath);
-
-        if (saved)
-        {
-            std::cout << "Key generate and save to: " << keyFilePath << std::endl;
-            std::cout << "Key: " << generatedKey << std::endl;
+                default :{
+                    std::cout<<"Invalid option\n";
+                    break;
+                }
+            }
+            break;
         }
-        else
-        {
-            std::cout << "Failed to save key! \n";
+
+        //decrypt
+        case 2:{
+            std::cout<<"1. decrypt via XOR\n";
+            std::cout<<"2. decrypt via AES128\n";
+            std::cout<<"Choose option: \n";
+            std::cin>>under_option;
+            switch(under_option){
+                case 1:{
+                    std::cout<<"==========XOR==========\n\n";
+                    std::cout<<"enter input path to file\n";
+                    std::cin>>inputPath;
+
+                    std::cout<<"enter output path to file\n";
+                    std::cin>>outputPath;
+
+                    std::cout<<"enter key\n";
+                    std::cout<<key;
+
+                    Crypto.xorDecryptFile(inputPath, outputPath, key);
+                    break;
+                }
+
+                case 2:{
+                    std::cout<<"==========AES128==========\n\n";
+                    std::cout<<"enter input path to file\n";
+                    std::cin>>inputPath;
+
+                    std::cout<<"enter output path to file\n";
+                    std::cin>>outputPath;
+
+                    std::cout<<"enter key\n";
+                    std::cin>>key;
+
+                    Crypto.aesDecryptFile(inputPath, outputPath, key);
+                    break;
+                }
+
+                default :{
+                    std::cout<<"Invalid option\n";
+                    break;
+                }
+            }
         }
-        break;
-    }
 
-    case 4:
-    {
-        std::cout << "Input file: \n";
-        std::cin >> inputPath;
+        //encrypt with key file
+        case 3:{
+            std::cout<<"enter input path to file\n";
+            std::cin>>inputPath;
 
-        std::cout << "Output file: \n";
-        std::cin >> outputPath;
+            std::cout<<"enter output path to file\n";
+            std::cin>>outputPath;
 
-        std::cout << "Algorithm(XOR, AES): \n";
-        std::cin >> algorithm;
+            std::cout<<"choose algorithm(XOR, AES128)\n";
+            std::cin>>algorithm;
 
-        std::cout << "Key file: \n";
-        std::cin >> keyFilePath;
+            std::cout<<"enter key file path\n";
+            std::cin>>filePath;
 
-        bool success = crypto.encryptWithKeyFile(inputPath, outputPath, algorithm, keyFilePath);
-        std::cout << (success ? "Success!" : "Failed!") << std::endl;
-        break;
-    }
+            Crypto.encryptWithKeyFile(inputPath, outputPath, algorithm, filePath);
+            break;
+        }
 
-    case 5:
-    {
-        std::cout << "Input file: \n";
-        std::cin >> inputPath;
+        //decrypt with key file
+        case 4:{
+            std::cout<<"enter input path to file\n";
+            std::cin>>inputPath;
 
-        std::cout << "Output file: \n";
-        std::cin >> outputPath;
+            std::cout<<"enter output path to file\n";
+            std::cin>>outputPath;
 
-        std::cout << "Algorithm(XOR, AES): \n";
-        std::cin >> algorithm;
+            std::cout<<"choose algorithm(XOR, AES128)\n";
+            std::cin>>algorithm;
 
-        std::cout << "Key file: \n";
-        std::cin >> keyFilePath;
+            std::cout<<"enter key file path\n";
+            std::cin>>filePath;
 
-        bool success = crypto.decryptWithKeyFile(inputPath, outputPath, algorithm, keyFilePath);
-        std::cout << (success ? "Success!" : "Failed!") << std::endl;
-        break;
-    }
+            Crypto.decryptWithKeyFile(inputPath, outputPath, algorithm, filePath);
+            break;
+        }
 
-    case 6:
-    {
-        return;
-    }
+        //generate and save key to file
+        case 5:{
+            std::cout<<"1. generate key for XOR\n";
+            std::cout<<"2. generate key for AES128\n";
+            std::cin>>under_option;
+            switch(under_option){
+                case 1:{
+                    std::cout<<"enter leght of key\n";
+                    std::cin>>key_leght;
 
-    default:
-    {
-        std::cout << "Infalid option!\n";
+                    std::cout<<"enter file path to key\n";
+                    std::cin>>filePath;
 
-        break;
-    }
+                    key = Crypto.xorGenerateKey(key_leght);
+                    Crypto.saveKeyToFile(key, filePath);
+                    break;
+                }
+
+                case 2:{
+                    std::cout<<"enter file path to key\n";
+                    std::cin>>filePath;
+
+                    key = Crypto.aesGenerateKey();
+                    Crypto.saveKeyToFile(key, filePath);
+                    break;
+                }
+
+                default :{
+                    std::cout<<"Invalid option\n";
+                    break;
+                }
+            }
+        }
+
+        //quit
+        case 6:{
+            break;
+        }
     }
 }
 
 int main()
 {
-    XOR_menu();
+   menu();
     return 0;
 }

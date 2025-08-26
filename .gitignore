@@ -1,5 +1,9 @@
 .vscode/
-.a
-.o
-.out
-.key.txt
+BlackCrypt
+AES128_key.txt
+XOR_key.txt
+test.txt
+decrypt_test.aes
+encrypt_test.aes
+decrypt_test.xor
+encrypt_test.xor

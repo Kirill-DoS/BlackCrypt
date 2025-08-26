@@ -3,10 +3,10 @@ CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra
 
 # target file 
-TARGET = crypto
+TARGET = BlackCrypt.out
 
 #source files
-SRC = src/*.cpp src/algorithms/XOR_Cipher.cpp
+SRC = src/*.cpp src/algorithms/XOR/XOR_Cipher.cpp src/algorithms/AES/AES.cpp
 
 #assembly
 $(TARGET):
