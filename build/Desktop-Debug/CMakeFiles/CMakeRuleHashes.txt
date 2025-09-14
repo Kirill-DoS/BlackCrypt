@@ -1,0 +1,4 @@
+# Hashes of file build rules.
+6d29a929002469caf95a44b4e3c66d96 BlackCrypt_autogen/timestamp
+eefbc081a852527d7cca28467a638556 CMakeFiles/BlackCrypt_autogen
+eefbc081a852527d7cca28467a638556 CMakeFiles/BlackCrypt_autogen_timestamp_deps
