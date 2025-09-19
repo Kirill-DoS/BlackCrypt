@@ -31,9 +31,16 @@ private slots:
 
     void on_execute_pushButton_clicked();
 
+    void on_browseInputButton_clicked();
+
+    void on_browseOutputButton_clicked();
+
+    void on_browseKeyfileButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QString inputPath, outputPath, keyfile;
-    int choose_operation, algorithm;
+    int choose_operation = 0;
+    int algorithm = 0;
 };
 #endif // MAINWINDOW_H

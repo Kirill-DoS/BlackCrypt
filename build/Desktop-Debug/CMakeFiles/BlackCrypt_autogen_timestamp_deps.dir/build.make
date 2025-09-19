@@ -66,10 +66,10 @@ include CMakeFiles/BlackCrypt_autogen_timestamp_deps.dir/compiler_depend.make
 # Include the progress variables for this target.
 include CMakeFiles/BlackCrypt_autogen_timestamp_deps.dir/progress.make
 
-CMakeFiles/BlackCrypt_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.4.2
-CMakeFiles/BlackCrypt_autogen_timestamp_deps: /usr/lib/qt6/libexec/uic
-CMakeFiles/BlackCrypt_autogen_timestamp_deps: /usr/lib/qt6/libexec/moc
 CMakeFiles/BlackCrypt_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.4.2
+CMakeFiles/BlackCrypt_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.4.2
+CMakeFiles/BlackCrypt_autogen_timestamp_deps: /usr/lib/qt6/libexec/moc
+CMakeFiles/BlackCrypt_autogen_timestamp_deps: /usr/lib/qt6/libexec/uic
 
 BlackCrypt_autogen_timestamp_deps: CMakeFiles/BlackCrypt_autogen_timestamp_deps
 BlackCrypt_autogen_timestamp_deps: CMakeFiles/BlackCrypt_autogen_timestamp_deps.dir/build.make
