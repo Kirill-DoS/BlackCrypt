@@ -37,10 +37,17 @@ private slots:
 
     void on_browseKeyfileButton_clicked();
 
+    void on_clear_pushButton_clicked();
+
+    void on_keyLenght_lineEdit_returnPressed();
+
+    void on_settings_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QString inputPath, outputPath, keyfile;
     int choose_operation = 0;
     int algorithm = 0;
+    int key_lenght = 0;
 };
 #endif // MAINWINDOW_H

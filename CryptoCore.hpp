@@ -6,7 +6,7 @@ public:
     //================XOR============
     static bool xorEncryptFile(const std::string& inputPath, const std::string& outputPath, const std::string& key);
     static bool xorDecryptFile(const std::string& inputPath, const std::string& outputPath, const std::string& key);
-    std::string xorGenerateKey(int leght);
+    static std::string xorGenerateKey(int leght);
 
     //============AES==============
     static bool aesEncryptFIle(const std::string& inputPath, const std::string& outputPath, const std::string& key);
